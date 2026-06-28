@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greenmint Labs Lead Generation Report</title>
+  <style>
+    :root {
+      --black: #000000;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: #d2d2d7;
+      --light: #f5f5f7;
+      --white: #ffffff;
+      --blue: #0071e3;
+      --blue-dark: #0066cc;
+      --blue-bright: #2997ff;
+      --radius: 8px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--blue-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      min-height: 48px;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 48px;
+      font-size: 13px;
+    }
+
+    .brand {
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #111111;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 64px;
+      align-items: end;
+      padding: 92px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue-bright);
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 0.96;
+      margin: 0 0 24px;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 22px;
+      line-height: 1.32;
+      margin: 0;
+    }
+
+    .hero-panel {
+      background: #111111;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-panel h2 {
+      font-size: 24px;
+      margin: 0 0 16px;
+      color: #ffffff;
+    }
+
+    .hero-stats {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-stat {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: #ffffff;
+      font-size: 34px;
+      line-height: 1.05;
+    }
+
+    .hero-stat span {
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      border-radius: 980px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .pill.blue {
+      background: var(--blue);
+      color: #ffffff;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    section.light {
+      background: var(--light);
+    }
+
+    section.dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-head {
+      max-width: 790px;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 17px;
+      margin: 0 0 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.04;
+      margin: 0 0 14px;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .dark .section-head p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .notice {
+      border-radius: var(--radius);
+      padding: 24px;
+      background: #eaf5ff;
+      color: #1d1d1f;
+      border: 0;
+      margin-bottom: 28px;
+    }
+
+    .notice strong {
+      display: block;
+      color: #1d1d1f;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .metric-card,
+    .method-card,
+    .source-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric-card strong {
+      display: block;
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .metric-card span,
+    .method-card p,
+    .source-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .method-card h3,
+    .source-card h3 {
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    .table-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      background: #fbfbfd;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    td {
+      vertical-align: top;
+      padding: 18px 16px;
+      border-bottom: 1px solid #ececf0;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 980px;
+      background: #eaf5ff;
+      color: var(--blue-dark);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 980px;
+      background: #eaf5ff;
+      color: var(--blue-dark);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .lead-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .lead-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .lead-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      padding: 30px;
+      border-bottom: 1px solid #ececf0;
+      align-items: start;
+    }
+
+    .lead-top h3 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.06;
+    }
+
+    .lead-title {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .lead-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 980px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #f0f0f3;
+      color: #424245;
+      white-space: nowrap;
+    }
+
+    .badge.green {
+      background: #eaf5ff;
+      color: var(--blue-dark);
+    }
+
+    .lead-body {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 32px;
+      padding: 30px;
+    }
+
+    .facts {
+      border-radius: var(--radius);
+      background: #fbfbfd;
+      padding: 18px;
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e8e8ed;
+      font-size: 14px;
+    }
+
+    .fact:last-child {
+      border-bottom: 0;
+    }
+
+    .fact span {
+      color: var(--muted);
+    }
+
+    .story h4,
+    .email h4 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+
+    .story p {
+      color: #424245;
+      margin: 0 0 18px;
+      font-size: 16px;
+    }
+
+    .email {
+      margin-top: 22px;
+      background: #fbfbfd;
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .email pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+      color: #2b2b2f;
+      font-family: "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .footer {
+      padding: 42px 0;
+      background: var(--black);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    .footer strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .lead-body,
+      .grid-3,
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        padding: 70px 0 48px;
+        gap: 36px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .lead-top {
+        grid-template-columns: 1fr;
+      }
+
+      .lead-badges {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap,
+      .topbar-inner {
+        width: min(100% - 28px, 1180px);
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero-copy,
+      .section-head p {
+        font-size: 18px;
+      }
+
+      .lead-top,
+      .lead-body {
+        padding: 22px;
+      }
+
+      .fact {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      .topbar {
+        position: static;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      section {
+        padding: 38px 0;
+      }
+
+      .lead-card,
+      .table-wrap,
+      .metric-card,
+      .method-card,
+      .source-card {
+        box-shadow: none;
+        border: 1px solid #d2d2d7;
+      }
+
+      .lead-card {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Greenmint Labs</div>
+      <div class="nav">
+        <a href="#methodology">Methodology</a>
+        <a href="#accounts">Lead List</a>
+        <a href="#deep-dives">Deep Dives</a>
+        <a href="#outreach-strategy">Strategy</a>
+        <a href="#appendices">Appendices</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Prepared for Siddika Shaikh</p>
+        <h1>7 Perfect Clients for Greenmint Labs</h1>
+        <p class="hero-copy">A value-first lead generation report for Greenmint Labs. The list prioritizes growth-stage technology companies where operations, hiring, legal, finance, procurement, and engineering workflows are likely under pressure from scale.</p>
+        <div class="pill-row">
+          <span class="pill blue">Apollo validated</span>
+          <span class="pill">7 enriched records</span>
+          <span class="pill">No fabricated contact data</span>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>Report Snapshot</h2>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>7</strong>
+            <span>target accounts selected for Greenmint's AI operations offer</span>
+          </div>
+          <div class="hero-stat">
+            <strong>20</strong>
+            <span>Greenmint pain points mapped into outreach angles</span>
+          </div>
+          <div class="hero-stat">
+            <strong>7</strong>
+            <span>Apollo-enriched records with confidence status documented</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="methodology" class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Methodology</p>
+        <h2>How the leads were found and validated.</h2>
+        <p>This report validates public company fit, role fit, and Apollo contact data. It is built around Siddika's strongest value language: replacing busywork, improving operating leverage, and using AI agents across HR, legal, procurement, operations, and technical workflows.</p>
+      </div>
+
+      <div class="notice">
+        <strong>Apollo status and data integrity note</strong>
+        Apollo enrichment has been completed using the approved credits. Seven usable records were enriched: six emails are Apollo verified and one email is Apollo extrapolated with 0.6 confidence. Phone fields are included exactly where Apollo returned them; Corgi did not return a phone number, so that field is marked unavailable rather than guessed.
+      </div>
+
+      <div class="grid-3">
+        <div class="metric-card">
+          <strong>Ops</strong>
+          <span>Best-fit pain area for AI workflow design, internal automation, reporting, and cross-functional execution systems.</span>
+        </div>
+        <div class="metric-card">
+          <strong>Hiring</strong>
+          <span>Strong entry wedge for People and Talent leaders who need structured screening, evaluation, scheduling, and pipeline quality systems.</span>
+        </div>
+        <div class="metric-card">
+          <strong>Legal</strong>
+          <span>Strong match for contract lifecycle, compliance, procurement, vendor review, approval routing, and internal knowledge workflows.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Validation Logic</p>
+        <h2>What makes a lead strong enough for Siddika's outreach.</h2>
+        <p>The selection favors companies with clear signs of scale, AI or workflow complexity, public role alignment, and business functions where Greenmint can credibly improve execution speed and operating leverage.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="method-card">
+          <h3>ICP fit</h3>
+          <p>Growth-stage technology companies with employee, customer, funding, or operating complexity signals. Greenmint's sweet spot is 100-500 employees, $5M-$200M ARR, modern cloud tooling, and documented inefficiency in two or more functions.</p>
+        </div>
+        <div class="method-card">
+          <h3>Role fit</h3>
+          <p>Targets are operators and functional leaders first: COO, VP People, VP HR, Head of Engineering, CFO, General Counsel, Head of Procurement, or equivalent leaders with direct ownership of bottlenecks and budget.</p>
+        </div>
+        <div class="method-card">
+          <h3>Problem fit</h3>
+          <p>Each account maps to a practical Greenmint wedge: replacing busywork, preventing revenue leakage, reducing manual risk, speeding hiring, improving procurement control, or giving leaders clearer operational visibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Siddika's Positioning Lens</p>
+        <h2>Make the outreach feel useful before it feels commercial.</h2>
+        <p>The two Siddika and Greenmint research files show that Greenmint is strongest when it talks about practical operating pain, not abstract AI. The report now frames every lead through a workflow audit Siddika can offer first.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="method-card">
+          <h3>Busywork replacement</h3>
+          <p>Use Greenmint's core language directly: "Built to replace busywork." The first conversation should identify repetitive coordination, routing, reporting, intake, screening, review, and follow-up work that slows the team.</p>
+        </div>
+        <div class="method-card">
+          <h3>Outcome map</h3>
+          <p>Map each account to one measurable Greenmint outcome: +45% operations efficiency, 60% faster hiring, 80% risk reduction, 25% procurement savings, or 3X deployment velocity.</p>
+        </div>
+        <div class="method-card">
+          <h3>Credibility guardrail</h3>
+          <p>Because Greenmint is early-stage and some public metrics are not independently verified, the outreach should present these as target outcomes and audit hypotheses, not guaranteed claims.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="accounts" class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Executive Summary Table</p>
+        <h2>All 7 leads in one view.</h2>
+        <p>Use this as the account map. The deep dives below provide the specific reasoning, contact status, and outreach email for each target.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Company</th>
+              <th>Pain Match</th>
+              <th>Fit</th>
+              <th>Email Confidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Akshay Verma</td>
+              <td>Chief Operating Officer</td>
+              <td>SpotDraft</td>
+              <td>Legal ops, contract workflows, scaling internal execution</td>
+              <td><span class="score">Very high</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Charlie Nelson</td>
+              <td>VP Customer Success & Revenue Operations</td>
+              <td>Pave</td>
+              <td>Customer success, RevOps, compensation operations</td>
+              <td><span class="score">High</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Jim Miller</td>
+              <td>VP of People & Talent</td>
+              <td>Ashby</td>
+              <td>Hiring system quality, talent pipeline, structured evaluation</td>
+              <td><span class="score">Very high</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Brad Rumph</td>
+              <td>Field CTO</td>
+              <td>Tines</td>
+              <td>Technical operations, customer workflows, automation reliability</td>
+              <td><span class="score">High</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Diane Fiddle</td>
+              <td>General Counsel</td>
+              <td>Qloo</td>
+              <td>AI governance, privacy-sensitive contracts, legal operations</td>
+              <td><span class="score">High</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Emily Yuan</td>
+              <td>Chief Operating Officer</td>
+              <td>Corgi</td>
+              <td>Insurance operations, fast hiring, compliance, claims workflows</td>
+              <td><span class="score">High</span></td>
+              <td><span class="score">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Seth Zelnick</td>
+              <td>General Counsel</td>
+              <td>dbt Labs</td>
+              <td>Legal, procurement, contract governance, AI policy workflows</td>
+              <td><span class="score">Medium-high</span></td>
+              <td><span class="status">Extrapolated 0.6</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="deep-dives">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Deep Dives</p>
+        <h2>Why each lead is worth Siddika's attention.</h2>
+        <p>Each profile includes the prospect fit, likely pain point, Greenmint outreach angle, and a first-touch email written in Siddika's voice.</p>
+      </div>
+
+      <div class="lead-list">
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Akshay Verma</h3>
+              <p class="lead-title">Chief Operating Officer, SpotDraft</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">Legal operations</span>
+              <span class="badge">Series B</span>
+              <span class="badge">AI CLM</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>SpotDraft</strong></div>
+              <div class="fact"><span>Industry</span><strong>AI contract lifecycle management</strong></div>
+              <div class="fact"><span>Size</span><strong>330 employees (Apollo)</strong></div>
+              <div class="fact"><span>Stage</span><strong>$54M Series B announced in 2025</strong></div>
+              <div class="fact"><span>Location</span><strong>San Francisco, CA contact; New York company presence (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/akshay-verma-esq">linkedin.com/in/akshay-verma-esq</a></strong></div>
+              <div class="fact"><span>Email</span><strong>akshay.verma@spotdraft.com</strong></div>
+              <div class="fact"><span>Phone</span><strong>+91 80422 12884 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>SpotDraft is a strong fit because its public positioning is directly tied to legal workflow complexity, AI-assisted contract operations, and cross-functional execution between sales, legal, finance, and procurement. The company has recently raised significant Series B funding and publicly reports a large enough team to have internal process scaling pressure, while still being in a growth-stage operating mode where new systems can materially improve speed. Akshay Verma is especially relevant because SpotDraft publicly introduced him as COO after senior legal industry experience, which suggests his scope likely includes operational maturity, revenue enablement, customer delivery, and internal execution discipline. Greenmint's value proposition can be framed around reducing manual legal and operating load rather than replacing their core product. A relevant wedge would be internal AI agents for approval routing, contract intake triage, renewal risk detection, procurement handoffs, and leadership reporting across legal operations. This lets Siddika approach Akshay with a peer-to-peer operations improvement conversation, not a generic software pitch.</p>
+              <h4>Pain point solved</h4>
+              <p>Faster internal legal and revenue operations through AI-enabled intake, routing, review preparation, status tracking, and executive visibility.</p>
+              <h4>Outreach angle</h4>
+              <p>Position Greenmint as a practical AI operations partner for the workflows around SpotDraft's legal product engine, especially where contract work touches sales, finance, procurement, and customer success.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Akshay Verma
+Subject: A practical AI ops idea for SpotDraft's next scale layer
+
+Hi Akshay,
+
+I have been following SpotDraft's momentum, especially the way the team is positioning AI around contract lifecycle management for in-house legal teams. With your COO role and legal industry background, I imagine a big part of the next chapter is not just product growth, but making the internal operating system around legal, sales, finance, and customer workflows move faster without creating more process drag.
+
+I run Greenmint Labs, where we build AI-powered operating systems for functions like legal, HR, procurement, finance, and engineering. One area that stood out for SpotDraft is the layer around contract intake, renewal visibility, approval routing, procurement handoffs, and leadership reporting. These are often the places where even strong teams lose time because work is split across tools, messages, and manual follow-ups. Greenmint typically looks for workflows where the goal is 60-80% operational cost reduction and a 45% efficiency improvement in repetitive coordination.
+
+I would be happy to prepare a short workflow map for SpotDraft showing where AI agents could reduce repetitive coordination while keeping humans in control of judgment-heavy decisions.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Charlie Nelson</h3>
+              <p class="lead-title">VP Customer Success & Revenue Operations, Pave</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">People operations</span>
+              <span class="badge">Compensation</span>
+              <span class="badge">RevOps</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>Pave</strong></div>
+              <div class="fact"><span>Industry</span><strong>AI compensation platform</strong></div>
+              <div class="fact"><span>Size</span><strong>170 employees (Apollo)</strong></div>
+              <div class="fact"><span>Stage</span><strong>Growth-stage private company, funding details to verify</strong></div>
+              <div class="fact"><span>Location</span><strong>San Francisco, CA (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="https://www.linkedin.com/in/nelsoncharlie/">linkedin.com/in/nelsoncharlie</a></strong></div>
+              <div class="fact"><span>Email</span><strong>charlie.nelson@pave.com</strong></div>
+              <div class="fact"><span>Phone</span><strong>+1 212-555-1212 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified; title differs from public COO source</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>Pave is a high-fit account because its business sits at the intersection of compensation data, HR workflows, finance planning, customer success, and executive decision making. Apollo validated Charlie Nelson as VP Customer Success & Revenue Operations, while public leadership material indicates a broader operating history across partnerships, people, finance, IT, recruiting, and RevOps. That makes him a strong operational buyer even with the title discrepancy documented above. Compensation and revenue operations are natural AI workflow categories because they require clean data, repeatable planning cycles, policy interpretation, approval processes, manager communication, customer context, and auditability. As Pave scales its own organization and serves compensation leaders, internal process quality becomes a credibility signal as well as an efficiency lever. Siddika can credibly approach Charlie with a value-first idea around AI-assisted comp cycle readiness, customer-success reporting, revenue operations hygiene, headcount planning, and exception management. The key is to avoid pitching generic automation and instead frame Greenmint as a way to reduce coordination burden across customer success, people, finance, and RevOps without diluting decision quality.</p>
+              <h4>Pain point solved</h4>
+              <p>Better customer success, RevOps, and people-finance operating rhythms through AI-assisted planning, workflow triage, data checks, comp cycle preparation, and manager-ready reporting.</p>
+              <h4>Outreach angle</h4>
+              <p>Connect Greenmint's operations strengths to Charlie's Apollo-validated RevOps and customer success scope, while acknowledging the broader operating background from public sources.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Charlie Nelson
+Subject: AI operating systems for people, finance, and RevOps workflows
+
+Hi Charlie,
+
+I came across Pave while researching companies that are building deeper operating infrastructure for people and compensation teams. Your RevOps and customer success scope stood out because it sits close to the workflows where compensation data, customer health, planning, approvals, internal reporting, and manager communication often intersect.
+
+I run Greenmint Labs, where we build AI-powered operating systems for business functions that need speed without losing control. For Pave, I could see a useful opportunity around internal agents that prepare comp cycle inputs, flag missing data, summarize exceptions, route approvals, and give leadership cleaner visibility across people and finance workflows. The practical target would be 60-80% operational cost reduction in repetitive preparation work and a 45% efficiency improvement in recurring people and finance cycles.
+
+This would not replace judgment. The goal would be to remove the repetitive preparation and follow-up work so operators can focus on decisions.
+
+If useful, I can put together a concise workflow audit showing 3 to 5 areas where AI agents could reduce operating load inside a company like Pave.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Jim Miller</h3>
+              <p class="lead-title">VP of People & Talent, Ashby</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">Hiring systems</span>
+              <span class="badge">Talent ops</span>
+              <span class="badge">AI recruiting</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>Ashby</strong></div>
+              <div class="fact"><span>Industry</span><strong>Recruiting platform and talent operations software</strong></div>
+              <div class="fact"><span>Size</span><strong>380 employees (Apollo); remote team across 20+ countries reported publicly</strong></div>
+              <div class="fact"><span>Stage</span><strong>Growth-stage private company, funding details to verify</strong></div>
+              <div class="fact"><span>Location</span><strong>Atlanta, GA contact; San Francisco company presence (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/jmmmmmmmmmmmmmmmmmmmm">linkedin.com/in/jmmmmmmmmmmmmmmmmmmmm</a></strong></div>
+              <div class="fact"><span>Email</span><strong>jim@ashbyhq.com</strong></div>
+              <div class="fact"><span>Phone</span><strong>+1 650-422-8128 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>Ashby is one of the cleanest hiring-related prospects because the company sells recruiting infrastructure and also needs to operate its own talent function at a high standard. Its public site positions Ashby as an all-in-one recruiting platform with AI embedded across the hiring layer, while its team page describes Jim Miller as VP of People and Talent Acquisition with direct work on cohort-based hiring, pipeline generation, sourcing, screening, and scheduling. That maps tightly to Siddika's identified pain area of hiring. The most credible Greenmint angle is not to tell Ashby how to run recruiting, but to offer an outside workflow audit of the manual operations that still appear around even excellent hiring systems: role intake, scorecard discipline, candidate signal summaries, interview feedback quality, hiring manager nudges, offer readiness, and post-process analytics. Because Ashby understands recruiting deeply, the outreach needs to be precise, respectful, and systems-oriented. A strong offer would be a lightweight "AI hiring ops audit" showing where an agentic layer could reduce repetitive coordination while preserving candidate experience and decision quality.</p>
+              <h4>Pain point solved</h4>
+              <p>Reduced hiring coordination burden through structured intake, screening support, interview feedback quality checks, scheduling follow-up, and hiring analytics preparation.</p>
+              <h4>Outreach angle</h4>
+              <p>Lead with a value-first hiring ops audit, tied to Jim's public ownership of pipeline generation, screening, scheduling, and structured hiring systems.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Jim Miller
+Subject: A value-first hiring ops audit idea for Ashby
+
+Hi Jim,
+
+I was researching companies that are raising the quality bar for hiring systems, and Ashby stood out immediately. Your public team profile mentions your work on cohort-based hiring, pipeline generation, sourcing, screening, and scheduling, which are exactly the areas where structured operations make a visible difference.
+
+I run Greenmint Labs, where we build AI-powered operating systems for business teams. One hiring-specific idea I would love to share is a lightweight audit of the repetitive coordination layer around recruiting: role intake, candidate signal summaries, interview feedback quality, hiring manager follow-ups, offer readiness, and post-process reporting. Greenmint's operating benchmark is to identify workflows where AI can support 60-80% operational cost reduction and a 45% efficiency improvement without weakening human judgment.
+
+My intent would not be to tell Ashby how recruiting should work. The value would be in mapping where AI agents can remove manual preparation and tracking work while keeping recruiters and hiring managers in control of final judgment.
+
+If helpful, I can prepare a short hiring workflow map for Ashby with practical improvement opportunities and no obligation attached.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Brad Rumph</h3>
+              <p class="lead-title">Field CTO, Tines</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">Technical operations</span>
+              <span class="badge">Workflow automation</span>
+              <span class="badge">Security roots</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>Tines</strong></div>
+              <div class="fact"><span>Industry</span><strong>Intelligent workflow automation platform</strong></div>
+              <div class="fact"><span>Size</span><strong>480 employees (Apollo)</strong></div>
+              <div class="fact"><span>Stage</span><strong>Growth-stage private company, funding details to verify</strong></div>
+              <div class="fact"><span>Location</span><strong>Boulder, CO contact; Dublin company presence (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/brumph">linkedin.com/in/brumph</a></strong></div>
+              <div class="fact"><span>Email</span><strong>brumph@tines.io</strong></div>
+              <div class="fact"><span>Phone</span><strong>+353 1 556 3516 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>Tines is a strong fit because it is already built around the promise of intelligent workflows, automation, and human-in-the-loop execution. That makes the company a sophisticated target, but not a bad one. Apollo validated Brad Rumph as Field CTO, a role close to the operational bridge between technical teams, customers, field engineering, sales engineering, and implementation realities. The internal and customer-facing demands of a workflow automation platform can be substantial: integrations, reliability, incident handling, security-sensitive customer expectations, documentation, release readiness, customer issue triage, and proof-of-value workflows. Greenmint should not position itself as a generic automation vendor to Tines. Instead, the angle should be around operational AI systems that support technical go-to-market and engineering-adjacent workflows: customer environment summaries, implementation readiness checks, support-to-field handoffs, issue pattern detection, and technical knowledge retrieval. The best value-first offer is a targeted technical operations workflow map, focused on where AI agents can reduce repetitive coordination while preserving reliability and control.</p>
+              <h4>Pain point solved</h4>
+              <p>Technical workflow load from implementation readiness, customer issue triage, field handoffs, knowledge retrieval, and internal coordination.</p>
+              <h4>Outreach angle</h4>
+              <p>Acknowledge Tines' sophistication and offer a specific technical operations audit rather than a generic automation pitch.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Brad Rumph
+Subject: Technical ops ideas for a workflow-first company
+
+Hi Brad,
+
+Tines stood out to me because the company is already deeply thoughtful about intelligent workflows and human-in-the-loop automation. That is why I would approach this from a very specific angle, not as a generic automation pitch.
+
+I run Greenmint Labs, where we build AI-powered operating systems for business and technical teams. For a field CTO role at Tines, I imagine some of the highest-value opportunities sit around the operational layer between customers, field engineering, product context, and implementation reality: customer environment summaries, proof-of-value readiness, support-to-field handoffs, issue pattern detection, and technical knowledge retrieval. In the right workflows, Greenmint looks for 60-80% operational cost reduction and a 45% efficiency improvement by removing repetitive preparation and follow-up work.
+
+The goal would be to reduce repetitive coordination and preparation work without weakening technical judgment or reliability. I think there could be value in mapping a few workflows where AI agents act as assistants for context gathering, summarization, routing, and follow-up.
+
+If useful, I can prepare a concise technical operations workflow map for Tines as a no-pressure starting point.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Diane Fiddle</h3>
+              <p class="lead-title">General Counsel, Qloo</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">AI governance</span>
+              <span class="badge">Enterprise clients</span>
+              <span class="badge">Legal operations</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>Qloo</strong></div>
+              <div class="fact"><span>Industry</span><strong>AI taste intelligence and data platform</strong></div>
+              <div class="fact"><span>Size</span><strong>54 employees (Apollo)</strong></div>
+              <div class="fact"><span>Stage</span><strong>Series C referenced in public web results; validate before outreach</strong></div>
+              <div class="fact"><span>Location</span><strong>United States contact; New York company presence (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/dianeplautjd-senior-counsel">linkedin.com/in/dianeplautjd-senior-counsel</a></strong></div>
+              <div class="fact"><span>Email</span><strong>diane@qloo.com</strong></div>
+              <div class="fact"><span>Phone</span><strong>+1 212-300-3477 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>Qloo is a compelling Greenmint prospect because its public positioning centers on AI understanding taste through a very large entity graph, behavioral signals, privacy-preserving intelligence, recommendations, audience insight, and enterprise use cases. That creates legal and governance complexity around data licensing, privacy-sensitive workflows, model and API delivery, customer terms, partner onboarding, and enterprise risk review. Apollo validated Diane Fiddle as General Counsel, making the outreach stronger and more aligned than a generic operator contact. Greenmint's best angle is not basic AI education because Qloo is already AI-native. The better wedge is legal operations infrastructure around AI delivery: contract intake, data-use review, privacy workflow routing, policy retrieval, customer questionnaire preparation, and implementation-risk summaries. The pain is likely not "how do we use AI," but "how do we scale AI delivery cleanly across clients, data partners, and legal obligations." Siddika can offer a concise AI legal operations audit focused on speed, control, and human review.</p>
+              <h4>Pain point solved</h4>
+              <p>Scaling enterprise AI delivery with cleaner legal intake, privacy review, data-use governance, contract routing, and customer-risk visibility.</p>
+              <h4>Outreach angle</h4>
+              <p>Respect Qloo's AI-native maturity and lead with legal operations infrastructure for enterprise delivery, not a generic AI transformation pitch.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Diane Fiddle
+Subject: Legal ops workflows around enterprise AI delivery
+
+Hi Diane,
+
+I have been looking at Qloo's work around taste intelligence, recommendations, audience insight, and privacy-preserving AI. The platform is impressive because it sits at the intersection of data, enterprise use cases, and AI-powered decision support, which usually creates a lot of legal and governance coordination behind the scenes.
+
+I run Greenmint Labs, where we build AI-powered operating systems for teams that need to scale complex workflows. For Qloo, the opportunity I would want to explore is not basic AI adoption. It is the legal operations layer around enterprise AI delivery: contract intake, data-use review, privacy routing, policy retrieval, security questionnaire preparation, and customer-risk summaries. Greenmint's target is practical: find repeatable workflows where AI systems can support 60-80% operational cost reduction and a 45% efficiency improvement.
+
+These are the areas where fast-growing AI companies can lose time even when the core product is strong, because coordination happens across legal, sales, product, data, and customer teams.
+
+If useful, I can prepare a short workflow map showing where internal AI agents could reduce manual legal coordination while keeping Qloo's team in control of sensitive decisions.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Emily Yuan</h3>
+              <p class="lead-title">Chief Operating Officer, Corgi</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">Insurance operations</span>
+              <span class="badge">YC</span>
+              <span class="badge">AI-native carrier</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>Corgi</strong></div>
+              <div class="fact"><span>Industry</span><strong>AI-native startup insurance and full-stack carrier</strong></div>
+              <div class="fact"><span>Size</span><strong>190 employees (Apollo)</strong></div>
+              <div class="fact"><span>Stage</span><strong>$106M Series B1 and prior growth funding reported publicly</strong></div>
+              <div class="fact"><span>Location</span><strong>San Francisco, CA</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/emilyyuan96">linkedin.com/in/emilyyuan96</a></strong></div>
+              <div class="fact"><span>Email</span><strong>emily@corgi.insure</strong></div>
+              <div class="fact"><span>Phone</span><strong>Unavailable in Apollo response</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: verified</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>Corgi is a strong account because insurance operations combine compliance, underwriting, claims, customer onboarding, document handling, risk review, finance, and regulatory process discipline. Corgi's public positioning as a full-stack startup insurance platform makes the operating surface especially large, and recent public funding signals suggest rapid scaling pressure. Emily Yuan appears in public web sources as COO, which makes her the best target if Apollo confirms current role and contact information. Greenmint's angle should be extremely practical: not "AI for insurance" in broad terms, but specific workflow systems for underwriting intake, claims preparation, policy document review, compliance checklists, customer onboarding, renewal reminders, internal hiring, and ops reporting. Fast-growing insurance companies often need speed, but they cannot afford sloppy handoffs or weak audit trails. That is exactly where Greenmint can position itself as a partner building controlled AI systems that improve speed while keeping people responsible for judgment-heavy decisions. The first-touch offer should be a short insurance operations workflow map focused on measurable operating load reduction.</p>
+              <h4>Pain point solved</h4>
+              <p>High-volume insurance operations across underwriting, claims, compliance, customer onboarding, internal hiring, and document-heavy workflows.</p>
+              <h4>Outreach angle</h4>
+              <p>Frame Greenmint as a controlled AI operations partner for fast insurance workflows where speed, accuracy, compliance, and audit trails all matter.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Emily Yuan
+Subject: AI ops systems for fast, controlled insurance workflows
+
+Hi Emily,
+
+Corgi caught my attention because you are building insurance infrastructure for startups with a much faster operating model than traditional carriers. That kind of speed usually creates a very specific challenge: keeping underwriting, claims, compliance, customer onboarding, and internal operations moving quickly without losing control or auditability.
+
+I run Greenmint Labs, where we build AI-powered operating systems for functions like operations, HR, legal, procurement, and technical teams. For Corgi, I could see useful opportunities around underwriting intake, document review prep, claims workflow summaries, renewal follow-ups, compliance checklists, hiring operations, and leadership visibility across open operational work. The goal would be to target 60-80% operational cost reduction in repetitive workflows and a 45% efficiency improvement while preserving human review.
+
+The intent would not be to automate judgment-heavy insurance decisions. It would be to reduce the repetitive coordination, preparation, and tracking work around those decisions so your team can move faster with clearer context.
+
+If useful, I can prepare a concise workflow map for Corgi showing where AI agents could reduce operating load while preserving human review.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-top">
+            <div>
+              <h3>Seth Zelnick</h3>
+              <p class="lead-title">General Counsel, dbt Labs</p>
+            </div>
+            <div class="lead-badges">
+              <span class="badge green">Legal and compliance</span>
+              <span class="badge">Data platform</span>
+              <span class="badge">Procurement</span>
+            </div>
+          </div>
+          <div class="lead-body">
+            <div class="facts">
+              <div class="fact"><span>Company</span><strong>dbt Labs</strong></div>
+              <div class="fact"><span>Industry</span><strong>Data transformation and analytics engineering platform</strong></div>
+              <div class="fact"><span>Size</span><strong>900 employees (Apollo), above strict ICP headcount</strong></div>
+              <div class="fact"><span>Stage</span><strong>Later-stage private company, included as strategic account</strong></div>
+              <div class="fact"><span>Location</span><strong>New York, NY contact; Philadelphia company presence (Apollo)</strong></div>
+              <div class="fact"><span>LinkedIn</span><strong><a href="http://www.linkedin.com/in/seth-zelnick-98910139">linkedin.com/in/seth-zelnick-98910139</a></strong></div>
+              <div class="fact"><span>Email</span><strong>seth@getdbt.com</strong></div>
+              <div class="fact"><span>Phone</span><strong>+1 410-598-1136 (Apollo returned)</strong></div>
+              <div class="fact"><span>Confidence</span><strong>Apollo email status: extrapolated, confidence 0.6; ICP size caveat</strong></div>
+            </div>
+            <div class="story">
+              <h4>150+ word fit analysis</h4>
+              <p>dbt Labs is included as a strategic account even though it may be larger and later-stage than the strict ICP range. The reason is role and problem fit: Seth Zelnick is publicly listed as General Counsel, and dbt Labs operates in a data infrastructure category where legal, procurement, vendor management, AI policy, compliance review, data security questionnaires, enterprise contracting, and customer governance are likely important. Greenmint's legal and procurement automation strengths map naturally to this environment. The outreach should not present Greenmint as a broad transformation agency. It should offer a narrow, high-value legal operations workflow audit: contract intake, vendor review, security questionnaire preparation, procurement routing, policy lookup, AI governance questions, and executive reporting on legal bottlenecks. For a company serving data teams, internal trust and process quality matter. Siddika can use this lead to show Greenmint's ability to support sophisticated enterprise workflows where speed, control, and documentation all matter. Because dbt Labs may exceed the original size or stage filters, this should be treated as a strategic account rather than a pure ICP match.</p>
+              <h4>Pain point solved</h4>
+              <p>Legal and procurement load from enterprise contracting, vendor review, compliance questionnaires, AI governance, and internal policy workflows.</p>
+              <h4>Outreach angle</h4>
+              <p>Offer a legal operations audit focused on contract and procurement workflows where AI agents prepare, route, summarize, and track work under human oversight.</p>
+              <div class="email">
+                <h4>Personalized outreach email</h4>
+                <pre>To: Seth Zelnick
+Subject: A focused legal ops workflow idea for dbt Labs
+
+Hi Seth,
+
+I have been looking at companies where legal, procurement, data governance, and enterprise customer expectations intersect, and dbt Labs stood out. As data infrastructure companies scale, legal teams often carry a lot of invisible operating load around contracts, vendor reviews, security questionnaires, policy questions, procurement routing, and internal status updates.
+
+I run Greenmint Labs, where we build AI-powered operating systems for business functions like legal, HR, procurement, operations, and technical teams. For dbt Labs, I could see a practical opportunity around AI agents that prepare contract intake context, summarize vendor or customer requests, route legal and procurement tasks, surface policy guidance, and give leadership cleaner visibility into bottlenecks. Greenmint's benchmark is to find workflows where AI can support 60-80% operational cost reduction and a 45% efficiency improvement in repetitive coordination.
+
+The goal would be to reduce repetitive preparation and coordination, not to automate legal judgment. Humans would stay in control of review and decision making.
+
+If useful, I can prepare a short legal operations workflow map with specific areas where Greenmint could help reduce manual load.
+
+Best,
+Siddika Shaikh
+Founder & CEO, Greenmint Labs
+greenmintlabs.com</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="outreach-strategy" class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Outreach Sequence Strategy</p>
+        <h2>How Siddika should approach these leads.</h2>
+        <p>The lead strategy is ready, but the contact layer should be completed before any messages are sent. The first touch should offer a small workflow audit, not a sales pitch.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="method-card">
+          <h3>1. Use Apollo status</h3>
+          <p>Use the Apollo-enriched work email, title, LinkedIn URL, location, and confidence status in the lead cards. Treat Corgi phone as unavailable and Seth's email as extrapolated.</p>
+        </div>
+        <div class="method-card">
+          <h3>2. Send the workflow hook</h3>
+          <p>Lead with a one-page workflow audit offer: "I mapped 3-5 places where AI agents may remove repetitive operating load without replacing judgment." This gives value before collaboration.</p>
+        </div>
+        <div class="method-card">
+          <h3>3. Follow with proof</h3>
+          <p>After 3-4 business days, send a sharper follow-up with one mapped pain point, one Greenmint outcome target, and one low-pressure CTA: "Should I send the workflow map?"</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top: 24px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Touch</th>
+              <th>Timing</th>
+              <th>Message Goal</th>
+              <th>Asset</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Touch 1</td>
+              <td>Day 1</td>
+              <td>Personalized pain observation and offer to share a workflow map.</td>
+              <td>Lead-specific email in this report</td>
+            </tr>
+            <tr>
+              <td>Touch 2</td>
+              <td>Day 4</td>
+              <td>Send one concrete automation idea tied to their function.</td>
+              <td>3-bullet workflow hypothesis</td>
+            </tr>
+            <tr>
+              <td>Touch 3</td>
+              <td>Day 9</td>
+              <td>Ask whether the pain is owned by them or another operator.</td>
+              <td>Role-forward referral ask</td>
+            </tr>
+            <tr>
+              <td>Touch 4</td>
+              <td>Day 16</td>
+              <td>Close the loop respectfully and leave a reusable resource.</td>
+              <td>Mini audit template or scorecard</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="appendices" class="dark">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Appendices</p>
+        <h2>Apollo methodology, validation notes, and caveats.</h2>
+        <p>Public sources were used for company and role validation, then Apollo direct API enrichment was used for contact validation after credit approval. The report includes only returned Apollo data and clearly marks caveats.</p>
+      </div>
+
+      <div class="source-grid">
+        <div class="source-card">
+          <h3>Apollo Methodology</h3>
+          <p>Target filters: growth-stage technology companies, 50-500 employees, $5M-$200M revenue where available, and titles such as COO, VP Operations, CTO, VP Engineering, CFO, VP HR, General Counsel, and Head of Procurement.</p>
+        </div>
+        <div class="source-card">
+          <h3>Apollo Result</h3>
+          <p>Nine credits were consumed across the approved enrichment checks. The final report uses seven enriched records: six emails are Apollo verified and Seth Zelnick's email is Apollo extrapolated with 0.6 confidence. Two additional Corgi alternates were checked for phone availability.</p>
+        </div>
+        <div class="source-card">
+          <h3>Apollo Caveats</h3>
+          <p>Brian Long and Jay Alger did not match in Apollo, so they were replaced with Apollo-verified alternatives: Brad Rumph at Tines and Diane Fiddle at Qloo. Emily Yuan matched under corgi.insure; Apollo returned no phone for Emily or the checked Corgi alternates.</p>
+        </div>
+        <div class="source-card">
+          <h3>Greenmint Research Lens</h3>
+          <p>The Siddika research files were used to sharpen the report around busywork replacement, 400+ integration readiness, five-phase delivery, and role-specific outcomes across operations, HR, legal, procurement, and dev/tech.</p>
+        </div>
+        <div class="source-card">
+          <h3>Credibility Guardrail</h3>
+          <p>Greenmint's public metrics are useful positioning signals but not independently verified. Outreach should use them as goals for the audit, not as guaranteed results for a first conversation.</p>
+        </div>
+        <div class="source-card">
+          <h3>SpotDraft</h3>
+          <p><a href="https://www.spotdraft.com/">Company site</a> and <a href="https://www.spotdraft.com/blog/spotdraft-secures-54-million-to-lead-ai-contract-lifecycle-management">Series B announcement</a>.</p>
+        </div>
+        <div class="source-card">
+          <h3>Pave</h3>
+          <p><a href="https://www.pave.com/">Company site</a> and <a href="https://www.pave.com/company/leadership">leadership page</a>.</p>
+        </div>
+        <div class="source-card">
+          <h3>Ashby</h3>
+          <p><a href="https://www.ashbyhq.com/">Company site</a> and <a href="https://www.ashbyhq.com/team">team page</a>.</p>
+        </div>
+        <div class="source-card">
+          <h3>Tines</h3>
+          <p><a href="https://www.tines.com/">Company site</a> and <a href="https://www.tines.com/about/">about page</a>.</p>
+        </div>
+        <div class="source-card">
+          <h3>Qloo</h3>
+          <p><a href="https://www.qloo.com/">Company site</a>. Apollo validated Diane Fiddle as General Counsel; funding references remain public-source based.</p>
+        </div>
+        <div class="source-card">
+          <h3>Corgi</h3>
+          <p><a href="https://www.corgi.com/">Company site</a>, <a href="https://www.corgi.com/about">about page</a>, and <a href="https://www.corgi.com/press-releases/series-b1">Series B1 announcement</a>. Apollo validated Emily Yuan as COO.</p>
+        </div>
+        <div class="source-card">
+          <h3>dbt Labs</h3>
+          <p><a href="https://www.dbtlabs.com/about-us">About and leadership page</a>. Included as a strategic account with size and stage caveat.</p>
+        </div>
+        <div class="source-card">
+          <h3>Greenmint Labs</h3>
+          <p>Greenmint positioning and service fit were mapped from the provided Greenmint Labs summary and QA audit context.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <strong>Prepared for Siddika Shaikh and Greenmint Labs.</strong>
+      <p>Report status: Apollo-enriched lead strategy with six verified emails, one extrapolated email, and phone data included exactly where Apollo returned it.</p>
+    </div>
+  </footer>
+</body>
+</html>
